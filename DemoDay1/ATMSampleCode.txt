@@ -1,0 +1,192 @@
+wait(until customer enters ATM){
+    Display Homepage bank advertisements
+    if(when customer clicks on the screen and ATM is working){
+        Ask for language preferences?
+        Display "Langugae options (English, Hindi, Telugu)"
+        Read the user input selected language
+        Modify and Display the content in the selected language
+
+        Ask the customer to insert the ATM Card
+        wait for user to insert ATM card
+        if(user does not insert for more than 30 sec){
+            Go to step 1.
+        }
+        else{
+            Read the card
+            Ask for PIN?
+            Read the PIN entered by user
+            And Lock the Card within ATM machine
+            Verify the pin with bank
+
+            if(Pin entered is correct){
+                Display options
+                1.Withdraw
+                2.Deposit
+                3.Check balance
+                4.generate PIN
+                5.Change PIN
+                6.exit
+                Read user input
+                if(user selected to 1.withdraw){ #withdraw
+                    Ask for the amount to be withdrawn?
+                    Read the amount
+                    if(amount> 5000 USD){
+                        Display message :"Daily limit is reached"
+                    }
+                    else{
+                        check balance
+                        if(balance>=amount){
+                            Process transaction
+                            balance-amount
+                            update balance
+                            Dispense cash
+                            Ask to user to collect cash
+                            when user takes cash
+                            Ask if user wants to continue
+                            Read input
+                            if(user not want to continue){
+                                Terminate
+                                Ask if customer wants receipt? yes or no
+                                read input
+                                if(customer says yes){
+                                    Print receipt
+                                }
+                                else{
+                                    Display "Thank you using ATM"
+                                }
+                            }
+                        }
+                        else{
+                            Display "Insufficient balance"
+                            Show balance
+                            Ask user if wants to enter amount less than previous amount
+                            COntinue? yes or no
+                            read input
+                            if(yes){
+                                Go to line 29
+                            }
+                            else{
+                                Eject card
+                                Ask user to collect card
+                            }
+                        }
+                    }
+                }
+
+                if(user selected deposit){ #deposit
+                    Ask the amount user want to deposit
+                    read amount
+                    Add Balance+amount
+                    update balance
+                    Ask user if they wan to continue?
+                    read input
+                    if(user do not want to continue){
+                        Terminate
+                        Ask if customer wants receipt? yes or no
+                        read input
+                        if(customer says yes){
+                            Print receipt
+                        }
+                        else{
+                             Display "Thank you using ATM"
+                        }
+                    }
+                }
+
+                if(user selected check balance){ #check balance
+                    request bank for info
+                    display balance
+                    if(user do not want to continue){
+                        Terminate
+                        Ask if customer wants receipt? yes or no
+                        read input
+                        if(customer says yes){
+                            Print receipt
+                        }
+                        else{
+                             Display "Thank you using ATM"
+                        }
+                    }
+                }
+
+                if(user wants to genearate PIN){#Generate PIN
+                    Ask user for mobile number
+                    read number
+                    ask user for OTP
+                    read otp
+                    validate otp
+                    display screen to generate PIN
+                    ask the user to enter PIN
+                    read the pin
+                    save the pin
+                    if(user do not want to continue){
+                        Terminate
+                        Ask if customer wants receipt? yes or no
+                        read input
+                        if(customer says yes){
+                            Print receipt
+                        }
+                        else{
+                             Display "Thank you using ATM"
+                        }
+                    }
+                }
+                if(user wants to change PIN){ #chnage pin
+                    Ask for entering the existing pin
+                    read pin
+                    validate pin
+                    if(pin is correct){
+                        Ask user for mobile number
+                        read number
+                        ask user for OTP
+                        read otp
+                        validate otp
+                        if(otp is correct){
+                            display screen to generate PIN
+                            ask the user to enter PIN
+                            read the pin
+                            save the pin
+                            if(user do not want to continue){
+                                Terminate
+                                Ask if customer wants receipt? yes or no
+                                read input
+                                if(customer says yes){
+                                    Print receipt
+                                }
+                                else{
+                                    Display "Thank you using ATM"
+                                }
+                            }
+                        }
+                        else{
+                            Display invalid OTP
+                            go to line 135
+                        }
+                    }
+                    else{
+                        Display Invalid PIN
+                        go to line 135
+                    }
+                }
+
+                if(user selects Exit){ #exit
+                    Terminate
+                    Display "Thank you using ATM"
+                }
+            }
+            else{
+                Ask if user wants to retry or cancel
+                Read user Choice
+                if(choice is retry)
+                    go to line 16
+                else
+                    go to line 1
+            }
+        }
+    }
+    else{
+        i.e when customer clicks on the screen and ATM is not working
+        Display out of order
+    }
+
+}
