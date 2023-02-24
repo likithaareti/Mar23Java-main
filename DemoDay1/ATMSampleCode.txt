@@ -109,7 +109,7 @@ wait(until customer enters ATM){
                     }
                 }
 
-            #generate PIN
+
                 if(user wants to genearate PIN){#Generate PIN
                     Ask user for mobile number
                     read number
